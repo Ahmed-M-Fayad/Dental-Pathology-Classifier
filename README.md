@@ -83,10 +83,10 @@ The codebase is organized into logical modules:
 
 ## 📈 Results
 
-| Model | Accuracy | Loss | Training Time |
-|-------|----------|------|---------------|
-| Base CNN | XX.X% | X.XXX | XX min |
-| Augmented CNN | XX.X% | X.XXX | XX min |
+| Model | Accuracy | Loss |
+|-------|----------|------|
+| Base CNN | 51.07% | 1.3420
+| Augmented CNN | 80.45% | 0.5498
 
 *Results will be updated as training progresses*
 
