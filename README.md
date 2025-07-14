@@ -7,6 +7,11 @@
   <img src="https://img.shields.io/badge/OpenCV-27338e?style=for-the-badge&logo=OpenCV&logoColor=white" alt="OpenCV">
 </div>
 
+<div align="center">
+  <h3>🌐 <a href="http://34.203.68.42:8501">🚀 Try the Live Application</a></h3>
+  <p><em>Experience the dental pathology classification system in action!</em></p>
+</div>
+
 ---
 
 ## 🎯 Overview
@@ -18,6 +23,21 @@ A dental pathology classification system using deep learning to identify oral co
 - **Web interface** built with Streamlit for easy image upload and prediction
 - **Medical information** included for each condition with risk levels
 - **Prediction confidence** and top-3 results display
+
+---
+
+## 🌐 Live Demo
+
+### **🔗 [Access the Application](http://34.203.68.42:8501)**
+
+**Features Available:**
+- 📤 Upload dental images (JPG, PNG, BMP, TIFF)
+- 🔍 Real-time pathology classification
+- 📊 Confidence scores and detailed results
+- 🏥 Medical information for each condition
+- 📝 Session history tracking
+
+**System Status:** ✅ **Online and Ready**
 
 ---
 
@@ -69,6 +89,14 @@ The Streamlit app provides:
 - **Session history** tracking
 - **Responsive design** with dark mode support
 
+### 🌐 Access Methods
+
+**🔗 Live Application:** [http://34.203.68.42:8501](http://34.203.68.42:8501)
+
+**📱 Mobile Friendly:** The application is fully responsive and works on mobile devices
+
+**🌍 External Access:** Available globally - share the link with colleagues and collaborators
+
 ---
 
 ## 🛠️ Installation & Setup
@@ -84,10 +112,14 @@ The application requires the trained model file:
 efficientnetb0_transfer_final.keras
 ```
 
-### Running the Application
+### Running the Application Locally
 ```bash
 streamlit run dental_classification_app.py
 ```
+
+**Local URLs:**
+- Network URL: http://10.108.57.171:8501
+- External URL: http://34.203.68.42:8501
 
 ---
 
@@ -186,4 +218,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
   <strong>Developed during Computer Vision Engineering Internship at Cellula Technologies</strong>
+  <br><br>
+  <a href="http://34.203.68.42:8501">
+    <img src="https://img.shields.io/badge/🌐_Live_Demo-Available-brightgreen?style=for-the-badge" alt="Live Demo">
+  </a>
 </div>
