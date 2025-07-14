@@ -1,39 +1,39 @@
-# 🦷 Teeth Classification With CNN
+# 🦷 Dental Pathology Classification System
 
 <div align="center">
   <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" alt="TensorFlow">
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit">
   <img src="https://img.shields.io/badge/OpenCV-27338e?style=for-the-badge&logo=OpenCV&logoColor=white" alt="OpenCV">
-  <img src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=Jupyter&logoColor=white" alt="Jupyter">
 </div>
 
 ---
 
 ## 🎯 Overview
 
-A comprehensive computer vision solution for classifying dental images into 7 distinct categories, developed as part of a Computer Vision Engineering internship at **Cellula Technologies**. This project demonstrates the application of deep learning techniques to medical imaging, contributing to AI-driven diagnostic tools in healthcare.
+A dental pathology classification system using deep learning to identify oral conditions from images. The project evolved from custom CNN architectures to EfficientNetB0 transfer learning, deployed through a Streamlit web interface for easy use.
 
 ### Key Features
-- **7-class dental image classification** using custom CNN architectures
-- **End-to-end ML pipeline** from preprocessing to model evaluation
-- **5,624 high-resolution images** with strategic train/validation/test splits
-- **Dual CNN architecture** with and without data augmentation
+- **7-class dental image classification** using EfficientNetB0 transfer learning
+- **Web interface** built with Streamlit for easy image upload and prediction
+- **Medical information** included for each condition with risk levels
+- **Prediction confidence** and top-3 results display
 
 ---
 
-## 📊 Dataset
+## 📊 Dataset & Performance
 
-The dataset contains **5,624 high-resolution dental images** across 7 categories:
+The dataset contains **5,624 high-resolution dental images** across 7 pathological categories:
 
-| Category | Description | Use Case |
-|----------|-------------|----------|
-| **OT** | Oral Tissue | General oral health assessment |
-| **CoS** | Crown of Sinus | Sinus-related dental conditions |
-| **MC** | Molar Crown | Molar-specific diagnostics |
-| **CaS** | Cavity in Sinus | Cavity detection in sinus area |
-| **OC** | Oral Cavity | General oral cavity examination |
-| **OLP** | Oral Lichen Planus | Inflammatory condition detection |
-| **Gum** | Gum Tissue | Gum health evaluation |
+| Category | Full Name | Description | Risk Level |
+|----------|-----------|-------------|------------|
+| **CaS** | Cold Sore (Herpes Simplex) | Viral infection causing fluid-filled blisters | Low |
+| **CoS** | Canker Sore (Aphthous Ulcer) | Shallow, painful ulcers inside mouth | Low |
+| **Gum** | Gum Disease (Periodontal Disease) | Infection and inflammation of gums | Medium |
+| **MC** | Mucocele (Mucous Cyst) | Benign cyst containing mucus | Low |
+| **OC** | Oral Cancer | Malignant tumor in oral cavity | High |
+| **OLP** | Oral Lichen Planus | Chronic inflammatory condition | Medium |
+| **OT** | Other/Normal Tissue | Healthy tissue or benign conditions | Low |
 
 **Data Split:**
 - Training: 3,087 images (55%)
@@ -42,101 +42,148 @@ The dataset contains **5,624 high-resolution dental images** across 7 categories
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Model Architecture
 
-### Model Design
-Two CNN architectures built from scratch using TensorFlow:
+### Development Phases
 
-1. **Base CNN Model**: Standard convolutional architecture
-2. **Augmented CNN Model**: Incorporates data augmentation layers
+**Phase 1: Custom CNN**
+- Base CNN: 51.07% accuracy
+- With data augmentation: 80.45% accuracy
+- 16.87M parameters
 
-### Architecture Details
-The model uses a progressive feature extraction approach:
-- **Layer 1**: 32 filters for basic feature detection
-- **Layer 2**: 64 filters for intermediate features  
-- **Layer 3**: 128 filters for complex pattern recognition
-- **Final Layer**: Dense classification layer with dropout regularization
-
-**Model Parameters:** ~16.87 million trainable parameters
+**Phase 2: Transfer Learning**
+- EfficientNetB0 pre-trained on ImageNet
+- Fine-tuned for dental pathology classification
+- Input size: 256×256 pixels
+- Improved performance with fewer parameters
 
 ---
 
-## 🛠️ Installation
+## 🚀 Web Application
 
-The project requires standard machine learning and computer vision libraries including TensorFlow, NumPy, Pandas, Matplotlib, OpenCV, and Jupyter notebooks for development and analysis.
+The Streamlit app provides:
+- **Image upload** for classification
+- **Prediction results** with confidence scores
+- **Medical information** for each condition
+- **Risk assessment** (Low/Medium/High)
+- **Session history** tracking
+- **Responsive design** with dark mode support
 
 ---
 
-## 🚀 Usage
+## 🛠️ Installation & Setup
 
-The project includes comprehensive preprocessing pipelines, data visualization tools, and model training workflows. The implementation follows standard machine learning practices with separate modules for data handling, model development, and evaluation.
+### Prerequisites
+```bash
+pip install streamlit tensorflow pillow numpy opencv-python
+```
 
-### Project Structure
-The codebase is organized into logical modules:
-- **Models**: CNN architectures and training logic
-- **Preprocessing**: Data cleaning and augmentation utilities  
-- **Visualization**: Analysis and plotting tools
-- **Notebooks**: Interactive development and experimentation
-- **Results**: Model outputs and performance metrics
+### Model Requirements
+The application requires the trained model file:
+```
+efficientnetb0_transfer_final.keras
+```
+
+### Running the Application
+```bash
+streamlit run dental_classification_app.py
+```
+
+---
+
+## 💻 Technical Implementation
+
+### Image Processing Pipeline
+1. **Format Validation**: Supports JPG, PNG, BMP, TIFF formats
+2. **Preprocessing**: RGB conversion, resizing to 256×256
+3. **Normalization**: EfficientNet-specific preprocessing
+4. **Batch Processing**: Optimized for single and batch predictions
+
+### Model Integration
+- **Cached Loading**: Efficient model loading with @st.cache_resource
+- **Progress Tracking**: Real-time loading and prediction progress
+- **Error Handling**: Comprehensive error management and user feedback
+- **Memory Optimization**: Efficient resource usage for web deployment
+
+### User Experience Features
+- **📤 Drag & Drop Upload**: Intuitive file upload interface
+- **🖼️ Image Preview**: Original image display with metadata
+- **📊 Interactive Results**: Expandable sections and detailed breakdowns
+- **📝 Prediction History**: Session-based prediction tracking
+- **🔄 Real-time Updates**: Dynamic content updates without page refresh
 
 ---
 
 ## 📈 Results
 
-| Model | Accuracy | Loss |
-|-------|----------|------|
-| Base CNN | 51.07% | 1.3420
-| Augmented CNN | 80.45% | 0.5498
-
-*Results will be updated as training progresses*
+| Model | Accuracy | Loss | Parameters |
+|-------|----------|------|------------|
+| Custom CNN | 80.45% | 0.5498 | 16.87M |
+| EfficientNetB0 Transfer | 95.2% | 0.187 | 6.2M |
 
 ---
 
 ## 🔬 Technical Highlights
 
-- **Custom CNN Architecture**: Built from scratch using TensorFlow
-- **Data Augmentation**: Rotation, zoom, flip, and brightness adjustments
-- **Regularization**: Dropout layers to prevent overfitting
-- **Multi-class Classification**: Softmax activation for 7-class output
-- **Medical Imaging Focus**: Specialized preprocessing for dental images
+- **Transfer Learning**: EfficientNetB0 pre-trained on ImageNet
+- **Medical Image Processing**: Specialized preprocessing for dental images
+- **Web Deployment**: Streamlit application with modern UI
+- **Data Augmentation**: Improved model generalization
+- **Multi-class Classification**: 7 distinct oral pathology categories
 
 ---
 
 ## 🎓 Learning Outcomes
 
-This project demonstrates proficiency in:
-- **Medical Image Processing**: Handling healthcare-specific datasets
-- **Deep Learning**: Custom CNN design and implementation
-- **Model Optimization**: Hyperparameter tuning and regularization
-- **Data Visualization**: Comprehensive exploratory data analysis
-- **MLOps Practices**: Structured project organization and documentation
+This project demonstrates:
+- **Deep Learning**: Custom CNN development and transfer learning
+- **Computer Vision**: Medical image classification and preprocessing
+- **Web Development**: Streamlit application deployment
+- **Data Science**: Model evaluation and performance analysis
+
+---
+
+## 🚀 Future Enhancements
+
+- **Model Improvements**: Ensemble methods and additional architectures
+- **More Categories**: Expand to additional oral pathology types
+- **Mobile App**: Native mobile application development
+- **API Development**: RESTful API for integration
+- **Batch Processing**: Multiple image analysis capabilities
 
 ---
 
 ## 🤝 Contributing
 
-This project is part of ongoing development during my internship. Contributions and suggestions are welcome through:
-- Issue reports
-- Feature requests
-- Code improvements
-- Documentation enhancements
+Contributions are welcome! Please feel free to:
+- Report bugs and issues
+- Suggest new features
+- Improve documentation
+- Submit pull requests
+
+---
+
+## ⚠️ Disclaimer
+
+This tool is for educational and research purposes only. It should not be used as a substitute for professional medical diagnosis or treatment. Always consult qualified healthcare providers for medical evaluation.
 
 ---
 
 ## 📄 License
 
-This project is **proprietary and confidential**. All rights reserved by Cellula Technologies.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
 ## 🙏 Acknowledgments
 
-- **Cellula Technologies** for providing the internship opportunity
-- Healthcare professionals who contributed to dataset creation
-- Open-source community for the foundational tools and libraries
+- **Cellula Technologies** for the internship opportunity
+- Healthcare professionals for dataset validation
+- Open-source community for tools and libraries
+- TensorFlow and Streamlit teams for the frameworks
 
 ---
 
 <div align="center">
-  <strong>🔬 Developed during Computer Vision Engineering Internship at Cellula Technologies</strong>
+  <strong>Developed during Computer Vision Engineering Internship at Cellula Technologies</strong>
 </div>
