@@ -28,7 +28,7 @@ A dental pathology classification system using deep learning to identify oral co
 
 ## 🌐 Live Demo
 
-### **🔗 [Access the Application](http://34.203.68.42:8501)**
+### **🔗 [Access the Application](https://huggingface.co/spaces/Mr0Diablo/Dental-Pathology-Classifier)**
 
 **Features Available:**
 - 📤 Upload dental images (JPG, PNG, BMP, TIFF)
