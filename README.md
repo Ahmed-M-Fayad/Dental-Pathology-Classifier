@@ -8,7 +8,7 @@
 </div>
 
 <div align="center">
-  <h3>🌐 <a href="http://34.203.68.42:8501">🚀 Try the Live Application</a></h3>
+  <h3>🌐 <a href="https://huggingface.co/spaces/Mr0Diablo/Dental-Pathology-Classifier/discussions">🚀 Try the Live Application</a></h3>
   <p><em>Experience the dental pathology classification system in action!</em></p>
 </div>
 
